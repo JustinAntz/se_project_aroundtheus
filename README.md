@@ -1,21 +1,14 @@
 # Project 3: Around The U.S.
 
-### Overview  
+## Project features
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+- Semantic HTML5
+- Grid
+- Flexbox
+- Positioning
+- Flat BEM file structure
+- Responsive Design
+
+## Plan on improving the project
+
+This project was desingned with a responsive layout in mind. That being said there are ways to make the transitions even smoother. The profile information layout also looks like it has room for improvement in the tablet view specifically. The project could also be greatly improved by adding functionality to the buttons. For example, if you were able to click the edit button and make changes to the information, that would be a huge improvement.
