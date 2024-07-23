@@ -87,6 +87,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    grid-gap: 14px 10px;
+    margin-right: 0;
   }
 
   .profile__name {
@@ -94,6 +96,7 @@
     font-size: 22px;
     margin-right: 10px;
     max-width: 222px;
+    line-height: 38px;
   }
 
   .profile__description {
@@ -116,5 +119,6 @@
 
   .profile__picture {
     margin-right: 0;
+    margin-bottom: 30px;
   }
 }
