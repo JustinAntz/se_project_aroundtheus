@@ -34,9 +34,3 @@
   opacity: 0.5;
   cursor: pointer;
 }
-
-@media screen and (max-width: 568px) {
-  .card__list {
-    padding: 15px 0 18px;
-  }
-}

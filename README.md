@@ -16,3 +16,7 @@ This project was desingned with a responsive layout in mind. That being said the
 ## Link to the Site
 
 - https://justinantz.github.io/se_project_aroundtheus/
+
+## Project Video
+
+- https://www.loom.com/share/1e3d992c9170484ca5f054222329ff63?sid=2f4ac874-327b-4602-b949-4b58bea09c41
