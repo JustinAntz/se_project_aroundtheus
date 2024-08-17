@@ -34,3 +34,7 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+.card__like-button_active {
+  background-image: url(../images/heart-icon-active.svg);
+}
