@@ -33,12 +33,14 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 
 const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
+const previewImageModal = document.querySelector("#preview-image-modal");
 
 const profileEditForm = editProfileModal.querySelector(".modal__form");
 const addCardForm = addCardModal.querySelector(".modal__form");
 
 const profileModalClose = editProfileModal.querySelector(".modal__close");
 const addCardModalClose = addCardModal.querySelector(".modal__close");
+const previewImageClose = previewImageModal.querySelector(".modal__close");
 
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -52,7 +54,8 @@ const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
 const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
 
 const cardListEl = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -67,14 +70,20 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
+  const previewImage = previewImageModal.querySelector(".modal__image");
+  const previewImageCaption = previewImageModal.querySelector(".modal__caption");
 
-  // add click listener to the cardImage element
-  // toggleModal with previewImageModal
+  cardImageEl.addEventListener("click", () => {
+    previewImage.src = cardImageEl.src
+    previewImage.alt = cardImageEl.alt
+    previewImageCaption.textContent = cardTitleEl.textContent
+    toggleModal(previewImageModal);
+  });
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
- 
+
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
@@ -122,8 +131,10 @@ addNewCardButton.addEventListener("click", () => toggleModal(addCardModal));
 profileModalClose.addEventListener("click", () =>
   toggleModal(editProfileModal)
 );
-
 addCardModalClose.addEventListener("click", () => toggleModal(addCardModal));
+previewImageClose.addEventListener("click", () =>
+  toggleModal(previewImageModal)
+);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);

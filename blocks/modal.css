@@ -22,6 +22,13 @@
   position: relative;
 }
 
+.modal__container_type_preview {
+  padding: 0;
+  background-color: transparent;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+}
+
 .modal__close {
   background-image: url(../images/close-icon.svg);
   border: none;
@@ -83,6 +90,18 @@
 
 .modal__button:hover {
   opacity: 0.8;
+}
+
+.modal__image {
+  border: none;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.modal__caption {
+  margin: 10px 0 0;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 540px) {
