@@ -1,3 +1,7 @@
+.card {
+  position: relative;
+}
+
 .card__image {
   height: 282px;
   width: 282px;
@@ -13,6 +17,21 @@
   border-radius: 0 0 10px 10px;
   justify-content: space-between;
   align-items: center;
+}
+
+.card__delete-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background: transparent url(../images/trash-icon.svg) center no-repeat;
+  height: 18px;
+  width: 19px;
+  border: none;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .card__title {
