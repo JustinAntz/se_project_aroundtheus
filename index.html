@@ -43,21 +43,32 @@
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" id="edit-modal">
           <input
             type="text"
             name="name"
             class="modal__input"
             id="profile-name-input"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__error" id="profile-name-input-error"></span>
           <input
             type="text"
             name="description"
             class="modal__input"
             id="profile-description-input"
             placeholder="Description"
+            minlength="2"
+            maxlength="200"
+            required
           />
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
           <button class="modal__button">Save</button>
         </form>
       </div>
@@ -75,15 +86,21 @@
             class="modal__input modal__input_type_title"
             id="location-title-input"
             placeholder="Title"
+            minlength="1"
+            maxlength="30"
+            required
           />
+          <span class="modal__error" id="location-title-input-error"></span>
           <input
-            type="text"
+            type="url"
             name="url"
             class="modal__input modal__input_type_url"
             id="location-url-input"
             placeholder="Image URL"
+            required
           />
-          <button class="modal__button">Save</button>
+          <span class="modal__error" id="location-url-input-error"></span>
+          <button class="modal__button modal__button_disabled" disabled>Save</button>
         </form>
       </div>
     </div>
@@ -108,6 +125,7 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
+    <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
