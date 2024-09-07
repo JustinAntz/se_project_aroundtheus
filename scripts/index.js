@@ -122,12 +122,12 @@ function handleAddCardSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link });
   closeModal(addCardModal);
+  e.target.reset();
 }
 
 function handleCloseOverlay(e) {
   if (e.target.classList.contains("modal_opened")) {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
+    closeModal(e.target);
   }
 }
 
