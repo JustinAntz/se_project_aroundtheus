@@ -106,10 +106,14 @@ function handleImageClick(name, link) {
   openModal(previewImageModal);
 }
 
-function renderCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
-  cardListEl.prepend(cardElement);
+  return card.getView();
+}
+
+function renderCard(cardData) {
+  const card = createCard(cardData);
+  cardListEl.prepend(card);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -129,6 +133,8 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link });
   closeModal(addCardModal);
   e.target.reset();
+  addFormValidator.resetValidation();
+  addFormValidator.disableButton();
 }
 
 function handleCloseOverlay(e) {
