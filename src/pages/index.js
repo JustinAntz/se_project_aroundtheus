@@ -5,29 +5,65 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
+import Api from "../components/Api.js";
 import { initialCards, data, config } from "../utils/consants.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                 Instantiate                                */
 /* -------------------------------------------------------------------------- */
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "ae2246ec-ce59-402a-a444-0dcdf78c5d1e",
+    "Content-Type": "application/json",
+  },
+});
+
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__picture",
 });
 
+api
+  .getUserInfo()
+  .then((data) => {
+    userInfo.setUserInfo({
+      name: data.name,
+      job: data.about,
+      avatar: data.avatar,
+    });
+  })
+  .catch((err) => console.error(err));
+
 const editProfileModal = new PopupWithForm("#edit-modal", (data) => {
-  userInfo.setUserInfo({
-    name: data.name,
-    job: data.description,
-  });
-  editProfileModal.close();
+  api
+    .updateUserInfo({
+      name: data.name,
+      job: data.description,
+    })
+    .then((res) => {
+      userInfo.setUserInfo({
+        name: res.name,
+        job: res.about,
+      });
+      editProfileModal.close();
+    })
+    .catch((err) => console.error(err));
 });
 editProfileModal.setEventListeners();
 
 const addCardModal = new PopupWithForm("#add-card-modal", (data) => {
-  renderCard({ name: data.title, link: data.url });
-  addCardModal.close();
-  addFormValidator.disableButton();
+  api
+    .addCard(data)
+    .then((res) => {
+      const card = createCard({ name: res.name, link: res.link });
+      cardSection.addItem(card);
+      addCardModal.close();
+      addFormValidator.reset();
+      addFormValidator.disableButton();
+    })
+    .catch((err) => console.error(err));
 });
 addCardModal.setEventListeners();
 
@@ -65,10 +101,10 @@ function createCard(cardData) {
   return card.getView();
 }
 
-function renderCard(cardData) {
-  const card = createCard(cardData);
-  cardSection.prependItem(card);
-}
+// function renderCard(cardData) {
+//   const card = createCard(cardData);
+//   cardSection.prependItem(card);
+// }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -85,7 +121,6 @@ editButton.addEventListener("click", () => {
 });
 
 addNewCardButton.addEventListener("click", () => addCardModal.open());
-
 /* -------------------------------------------------------------------------- */
 /*                             Initialize Section                             */
 /* -------------------------------------------------------------------------- */
